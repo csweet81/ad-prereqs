@@ -53,7 +53,7 @@ In summary, this walkthrough provides a practical framework for testing content 
 
 <h4>Step 2: Create a Virtual Network and Subnet</h4>
 
-<img src="https://i.imgur.com/ENjW05T.png" height="80%" width="80%" alt=""/>
+<img src="https://i.imgur.com/dc07sEq.png" height="80%" width="80%" alt=""/>
 
 - Navigate to Virtual Networks in the left-hand menu.
 - Click Create.
@@ -68,7 +68,7 @@ In summary, this walkthrough provides a practical framework for testing content 
 
 <h4>Step 3: Create the Domain Controller VM</h4>
 
-<img src="https://i.imgur.com/A4W0wBB.png" height="80%" width="80%" alt=""/>
+<img src="https://i.imgur.com/oiQGFP9.png" height="80%" width="80%" alt=""/>
 
 - Navigate: In the Azure Portal, search for Virtual Machines in the top search bar and select it.
 - Create VM:
@@ -85,7 +85,7 @@ In summary, this walkthrough provides a practical framework for testing content 
 
 <h4>Step 4: Create the Client-1 VM</h4>
 
-<img src="https://i.imgur.com/ysfJ0QP.png" height="80%" width="80%" alt=""/>
+<img src="https://i.imgur.com/lV0YqAr.png" height="80%" width="80%" alt=""/>
 
 - Navigate to Virtual Machines in the Azure Portal.
 - Click Create and choose Azure Virtual Machine.

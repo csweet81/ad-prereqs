@@ -2,7 +2,7 @@
 <img src="https://i.imgur.com/pJSsvpx.png" alt=""/>
 </p>
 
-<h1>Preparing Active Directory Infrastructure in Azure</h1>
+<h1>How to Prepare Active Directory Infrastructure in Azure</h1>
 <p>
 This tutorial demonstrates how to test network configurations, geo-restrictions, and VPN functionality using Azure Virtual Machines and ProtonVPN. By creating a virtual machine in one location and connecting it to a VPN in another, we explore how public IPs change, regional content variations, and VPN privacy impact user experiences.<br />
 

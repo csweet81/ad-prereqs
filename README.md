@@ -41,7 +41,7 @@ In summary, this walkthrough provides a practical framework for testing content 
 
 <h4>Step 1: Create a Resource Group</h4>
 
-<img src="https://i.imgur.com/LXakI0h.png" height="80%" width="80%" alt=""/>
+<img src="https://i.imgur.com/kfSXdsg.png" height="80%" width="80%" alt=""/>
 
 - Log into the Azure Portal.
 - Navigate to Resource Groups in the left-hand menu.

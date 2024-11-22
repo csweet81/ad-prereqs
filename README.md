@@ -24,8 +24,9 @@ In summary, this walkthrough provides a practical framework for testing content 
   - Step 1: Create a Resource Group
   - Step 2: Create a Virtual Network and Subnet
   - Step 3: Create the Domain Controller VM
-  - Step 4: Set DC-1’s NIC Private IP Address to Static
-  - Step 5: Log Into the VM and Disable the Windows Firewall
+  - Step 4: Create the Client-1 VM
+  - Step 5: Set DC-1’s NIC Private IP Address to Static
+  - Step 6: Log Into the VM and Disable the Windows Firewall
 - Part II: Setup Client-1 in Azure
   - Step 1: Create the Client VM
   - Step 2: Set Client-1’s DNS Settings to DC-1’s Private IP
@@ -82,7 +83,24 @@ In summary, this walkthrough provides a practical framework for testing content 
 - Click Review + Create, then Create.
 - Wait for Deployment: Once deployment completes, navigate to the VM's Overview page.
 
-<h4>Step 4: Set DC-1’s NIC Private IP Address to Static</h4>
+<h4>Step 4: Create the Client-1 VM</h4>
+
+<img src="https://i.imgur.com/ysfJ0QP.png" height="80%" width="80%" alt=""/>
+
+- Navigate to Virtual Machines in the Azure Portal.
+- Click Create and choose Azure Virtual Machine.
+- Enter the following details:
+  - VM Name: Client-1
+  - Region: Same as the Domain Controller (e.g., East US)
+  - Image: Windows 10 Pro.
+  - Size: Standard B2s (or equivalent).
+  - Username: labuser
+  - Password: Cyberlab123!
+  - Virtual Network: Select the same network as DC-1 (LabVNet)
+  - Subnet: Select the same subnet as DC-1 (LabSubnet)
+- Click Review + Create and then Create to deploy Client
+
+<h4>Step 5: Set DC-1’s NIC Private IP Address to Static</h4>
 
 <img src="https://i.imgur.com/ysfJ0QP.png" height="80%" width="80%" alt=""/>
 

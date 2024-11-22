@@ -13,22 +13,32 @@ In summary, this walkthrough provides a practical framework for testing content 
 
 - Microsoft Azure (Virtual Machines/Compute)
 - Remote Desktop
-- Internet Information Services (IIS)
-- ProtonVPN
 
 <h2>Operating Systems Used</h2>
 
-- Windows 10</b> (21H2)
+- Windows Server 2022</b>
 
 <h2>List of Steps</h2>
 
-- Step 1: Create a Resource Group
-- Step 2: Create a Virtual Network and Subnet
-- Step 3: 
+- Part I: Setup Domain Controller in Azure
+  - Step 1: Create a Resource Group
+  - Step 2: Create a Virtual Network and Subnet
+  - Step 3: Create the Domain Controller VM
+  - Step 4: Set DC-1’s NIC Private IP Address to Static
+  - Step 5: Log Into the VM and Disable the Windows Firewall
+- Part II: Setup Client-1 in Azure
+  - Step 1: Create the Client VM
+  - Step 2: Set Client-1’s DNS Settings to DC-1’s Private IP
+  - Step 3: Restart Client-1
+  - Step 4: Login to Client-1
+  - Step 5: Test Connectivity
+  - Step 6: Verify DNS Settings 
+
 
 <h2>Installation Steps</h2>
+<h3>I:Setup Domain Controller in Azure</h3>
 
-<h3>Step 1: Create a Resource Group</h3>
+<h4>Step 1: Create a Resource Group</h4>
 
 <img src="https://i.imgur.com/LXakI0h.png" height="80%" width="80%" alt=""/>
 
@@ -40,19 +50,22 @@ In summary, this walkthrough provides a practical framework for testing content 
   - Region: Select your preferred Azure region (e.g., "East US").
 - Click Review + Create and then Create.
 
-<h3>Step 2: Create a Resource Group in Azure</h3>
+<h4>Step 2: Create a Virtual Network and Subnet</h4>
 
 <img src="https://i.imgur.com/ENjW05T.png" height="80%" width="80%" alt=""/>
 
-- Action: Log into your Azure Portal at https://portal.azure.com.
-- Navigate: Click on Resource Groups from the navigation menu on the left-hand side.
-- Create Resource Group:
-  - Click + Create or Add.
-  - Enter a name for the resource group (e.g., "TestVMGroup").
-  - Select a region for the resource group. (This can be your current location.)
-  - Click Review + Create and then Create.
+- Navigate to Virtual Networks in the left-hand menu.
+- Click Create.
+- Enter the following details:
+  - Name: (e.g., "LabVNet").
+  - Region: Select the same region as the resource group.
+  - Under IP Addresses, configure the address space and subnet:
+  - Address Space: (e.g., "10.0.0.0/16").
+  - Subnet Name: (e.g., "LabSubnet").
+  - Subnet Address Range: (e.g., "10.0.0.0/24").
+- Click Review + Create and then Create.
 
-<h3>Step 3: Create a Windows 10 Virtual Machine</h3>
+<h4>Step 3: Create the Domain Controller VM</h4>
 
 <img src="https://i.imgur.com/A4W0wBB.png" height="80%" width="80%" alt=""/>
 
@@ -69,65 +82,92 @@ In summary, this walkthrough provides a practical framework for testing content 
 - Click Review + Create, then Create.
 - Wait for Deployment: Once deployment completes, navigate to the VM's Overview page.
 
-<h3>Step 4: Log Into the VM Using Remote Desktop</h3>
+<h4>Step 4: Set DC-1’s NIC Private IP Address to Static</h4>
 
 <img src="https://i.imgur.com/ysfJ0QP.png" height="80%" width="80%" alt=""/>
 
-- Download RDP File:
-  - On the VM's Overview page, click Connect > RDP.
-  - Download the .rdp file.
-- Open Remote Desktop:
-  - Open the downloaded .rdp file.
-  - Enter the admin username and password set during VM creation.
-- Log In: Connect to the virtual machine’s desktop.
+- Once the VM is created, navigate to Virtual Machines and select DC-1.
+- Under Settings, click Networking and select the NIC attached to the VM.
+- Under IP Configurations, click the configuration and set the private IP to Static.
+- Save the changes.
 
-<h3>Step 5: Check the VM’s IP Address</h3>
+<h4>Step 5: Log Into the VM and Disable the Windows Firewall</h4>
 
 <img src="https://i.imgur.com/jHokyQi.png" height="80%" width="80%" alt=""/>
 
-- Action: Open a browser within the VM and go to https://whatismyipaddress.com/.
-- Result: Note the new IP address displayed, which will reflect the VM’s geographic location.
-- Save: Copy this IP address and save it in the text file for comparison.
+- Navigate to Virtual Machines and select DC-1.
+- Click Connect, select RDP, and download the RDP file.
+- Use the RDP file to log into the VM using:
+  - Username: labuser.
+  - Password: Cyberlab123!
+- Open the Windows Firewall Settings:
+  - Navigate to Control Panel > System and Security > Windows Defender Firewall.
+  - Click Turn Windows Defender Firewall on or off.
+  - Disable the firewall for all profiles (Domain, Private, Public).
+- Save the changes.
 
-<h3>Step 6: Sign Up for ProtonVPN</h3>
+<h3>Part II: Setup Client-1 in Azure</h3>
+
+<h4>Step 1: Create the Client VM</h4>
 
 <img src="https://i.imgur.com/1lJMaD6.png" height="80%" width="80%" alt=""/>
 
-- Action: On your actual computer, sign up for a free ProtonVPN account at https://account.protonvpn.com/signup?plan=free&language=en.
-- Complete Registration: Follow the steps to create an account (you may need to verify your email).
-- Save Credentials: Note down the username and password for use later.
+- Navigate to Virtual Machines in the left-hand menu.
+- Click Create and select Azure Virtual Machine.
+- Enter the following details:
+  - VM Name: Client-1.
+  - Region: Same as DC-1.
+  - Image: Windows 10 Pro.
+  - Size: Choose an appropriate size (e.g., Standard B2s).
+  - Username: labuser.
+  - Password: Cyberlab123!
+  - Virtual Network: LabVNet.
+  - Subnet: LabSubnet.
+- Click Review + Create and then Create.
 
-<h3>Step 7: Install ProtonVPN on the VM</h3>
+<h3>Step 2: Set Client-1’s DNS Settings to DC-1’s Private IP</h3>
 
 <img src="https://i.imgur.com/DvPJrfh.png" height="80%" width="80%" alt=""/>
 
-- Action: On the VM, download the ProtonVPN client from https://protonvpn.com/.
-- Install: Follow the installation process within the VM.
-- Login: Log in with the ProtonVPN account credentials created earlier.
+- Once the VM is created, navigate to Virtual Machines and select Client-1.
+- Under Settings, click Networking.
+- Select the NIC attached to Client-1 and go to DNS Servers.
+- Set the DNS server to Custom and input DC-1’s Private IP Address.
+- Save the changes.
 
-<h3>Step 8: Connect to a VPN Server</h3>
+<h3>Step 3: Restart Client-1</h3>
 
 <img src="https://i.imgur.com/Q2AO7JN.png" height="80%" width="80%" alt=""/>
 
-- Action: In the ProtonVPN client, choose a VPN server in a different country (e.g., Japan or another far location).
-- Connect: Wait for the VPN to establish a secure connection.
+- From the Azure Portal, select Client-1.
+- Click Restart to apply the DNS changes.
 
-<h3>Step 9: Check the VPN’s IP Address</h3>
+<h3>Step 4: Login to Client-1</h3>
 
 <img src="https://i.imgur.com/IxZBzyC.png" height="80%" width="80%" alt=""/>
 
-- Action: Open a browser within the VM (while connected to the VPN) and go to https://whatismyipaddress.com/.
-- Result: Note the new IP address, reflecting the VPN server’s geographic location.
-- Save: Record this new IP address in the text file.
+- Connect to Client-1 using RDP (same method as DC-1).
+- Login with:
+  - Username: labuser.
+  - Password: Cyberlab123!
 
-<h3>Step 10: Test Websites with the VPN</h3>
+<h3>Step 5: Test Connectivity</h3>
+<img src="https://i.imgur.com/IxZBzyC.png" height="80%" width="80%" alt=""/>
 
-- Browse to Test Sites: While still on the VM and connected to the VPN, visit websites like:
-  - Google
-  - Disney
-  - Amazon
-- Observe Changes:
-  - Does Google display results in a different language or domain (e.g., .jp for Japan)?
-  - Does Disney redirect to a localized page?
-  - Does Amazon show local prices, offers, or products for the VPN server’s location?
-- Document Observations: Note any changes in site behavior or presentation and save these observations.
+- Open a Command Prompt or PowerShell on Client-1.
+- Run the following command:
+  - ping <DC-1 Private IP>
+- Ensure you see replies from DC-1's private IP.
+
+<h3>Step 6: Verify DNS Settings</h3>
+<img src="https://i.imgur.com/IxZBzyC.png" height="80%" width="80%" alt=""/>
+
+- From Client-1, open PowerShell.
+- Run the following command:
+  - ipconfig /all
+- Verify that the DNS Server is set to DC-1’s private IP.
+
+
+
+
+

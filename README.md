@@ -36,7 +36,7 @@ In summary, this walkthrough provides a practical framework for testing content 
 
 
 <h2>Installation Steps</h2>
-<h3>I:Setup Domain Controller in Azure</h3>
+<h3>Part I: Setup Domain Controller in Azure</h3>
 
 <h4>Step 1: Create a Resource Group</h4>
 

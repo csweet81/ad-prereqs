@@ -4,10 +4,13 @@
 
 <h1>How to Prepare Active Directory Infrastructure in Azure</h1>
 <p>
-This tutorial demonstrates how to test network configurations, geo-restrictions, and VPN functionality using Azure Virtual Machines and ProtonVPN. By creating a virtual machine in one location and connecting it to a VPN in another, we explore how public IPs change, regional content variations, and VPN privacy impact user experiences.<br />
+his tutorial walks you through the process of setting up a Domain Controller (DC) and a Client in Microsoft Azure, showcasing how to configure network connections and test functionality in a controlled virtual environment. By deploying a Windows Server as a Domain Controller (DC-1) and a Windows 10 machine as a client (Client-1), we’ll explore how to configure private networks, assign static IPs, and test connectivity between virtual machines.
 
-In summary, this walkthrough provides a practical framework for testing content localization, ensuring compliance, and evaluating VPN security, offering valuable insights for IT teams, developers, and cybersecurity professionals. 
-</p>
+Through this step-by-step guide, you’ll gain practical experience in:
+
+- Establishing a domain environment in Azure.
+- Configuring DNS settings and testing network connectivity.
+- Troubleshooting and ensuring seamless communication between virtual machines.
 
 <h2>Environments and Technologies Used</h2>
 

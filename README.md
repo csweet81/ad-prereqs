@@ -28,13 +28,17 @@ In summary, this walkthrough provides a practical framework for testing content 
 
 <h2>Installation Steps</h2>
 
-<h3>Setup Domain Controller in Azure</h3>
+<h3>Step 1: Create a Resource Group</h3>
 
 <img src="https://i.imgur.com/LXakI0h.png" height="80%" width="80%" alt=""/>
 
-- Action: Open a web browser on your actual computer (not a virtual machine) and go to https://whatismyipaddress.com/.
-- Purpose: This shows your public IP address as assigned by your Internet Service Provider.
-- Result: Copy the IP address shown on the page and save it in a text file (e.g., MyIP.txt) for reference.
+- Log into the Azure Portal.
+- Navigate to Resource Groups in the left-hand menu.
+- Click Create.
+- Enter the following details:
+  - Resource Group Name: (e.g., "LabResourceGroup").
+  - Region: Select your preferred Azure region (e.g., "East US").
+- Click Review + Create and then Create.
 
 <h3>Step 2: Create a Resource Group in Azure</h3>
 

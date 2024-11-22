@@ -111,8 +111,6 @@ In summary, this walkthrough provides a practical framework for testing content 
 
 <h4>Step 5: Log Into the VM and Disable the Windows Firewall</h4>
 
-<img src="https://i.imgur.com/jHokyQi.png" height="80%" width="80%" alt=""/>
-
 - Navigate to Virtual Machines and select DC-1.
 - Click Connect, select RDP, and download the RDP file.
 - Use the RDP file to log into the VM using:
@@ -120,6 +118,7 @@ In summary, this walkthrough provides a practical framework for testing content 
   - Password: Cyberlab123!
 - Open the Windows Firewall Settings:
   - Navigate to Control Panel > System and Security > Windows Defender Firewall.
+  - Alternately, you can type 'wf.msc' in the Start dock search bar.  
   - Click Turn Windows Defender Firewall on or off.
   - Disable the firewall for all profiles (Domain, Private, Public).
 - Save the changes.
@@ -128,7 +127,7 @@ In summary, this walkthrough provides a practical framework for testing content 
 
 <h4>Step 1: Create the Client VM</h4>
 
-<img src="https://i.imgur.com/1lJMaD6.png" height="80%" width="80%" alt=""/>
+<img src="https://i.imgur.com/dc07sEq.png" height="80%" width="80%" alt=""/>
 
 - Navigate to Virtual Machines in the left-hand menu.
 - Click Create and select Azure Virtual Machine.
@@ -145,7 +144,7 @@ In summary, this walkthrough provides a practical framework for testing content 
 
 <h3>Step 2: Set Client-1’s DNS Settings to DC-1’s Private IP</h3>
 
-<img src="https://i.imgur.com/DvPJrfh.png" height="80%" width="80%" alt=""/>
+<img src="https://i.imgur.com/MlCUQ6t.png" height="80%" width="80%" alt=""/>
 
 - Once the VM is created, navigate to Virtual Machines and select Client-1.
 - Under Settings, click Networking.
@@ -155,14 +154,14 @@ In summary, this walkthrough provides a practical framework for testing content 
 
 <h3>Step 3: Restart Client-1</h3>
 
-<img src="https://i.imgur.com/Q2AO7JN.png" height="80%" width="80%" alt=""/>
+<img src="https://i.imgur.com/FRe2Vj0.png" height="80%" width="80%" alt=""/>
 
 - From the Azure Portal, select Client-1.
 - Click Restart to apply the DNS changes.
 
 <h3>Step 4: Login to Client-1</h3>
 
-<img src="https://i.imgur.com/IxZBzyC.png" height="80%" width="80%" alt=""/>
+<img src="https://i.imgur.com/cdemX9a.png" height="80%" width="80%" alt=""/>
 
 - Connect to Client-1 using RDP (same method as DC-1).
 - Login with:
@@ -170,7 +169,7 @@ In summary, this walkthrough provides a practical framework for testing content 
   - Password: Cyberlab123!
 
 <h3>Step 5: Test Connectivity</h3>
-<img src="https://i.imgur.com/IxZBzyC.png" height="80%" width="80%" alt=""/>
+<img src="https://i.imgur.com/4HdBb4U.png" height="80%" width="80%" alt=""/>
 
 - Open a Command Prompt or PowerShell on Client-1.
 - Run the following command:
@@ -178,14 +177,9 @@ In summary, this walkthrough provides a practical framework for testing content 
 - Ensure you see replies from DC-1's private IP.
 
 <h3>Step 6: Verify DNS Settings</h3>
-<img src="https://i.imgur.com/IxZBzyC.png" height="80%" width="80%" alt=""/>
+<img src="https://i.imgur.com/ROvkxrC.png" height="80%" width="80%" alt=""/>
 
 - From Client-1, open PowerShell.
 - Run the following command:
   - ipconfig /all
 - Verify that the DNS Server is set to DC-1’s private IP.
-
-
-
-
-

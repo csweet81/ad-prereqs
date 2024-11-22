@@ -102,7 +102,7 @@ In summary, this walkthrough provides a practical framework for testing content 
 
 <h4>Step 5: Set DC-1’s NIC Private IP Address to Static</h4>
 
-<img src="https://i.imgur.com/ysfJ0QP.png" height="80%" width="80%" alt=""/>
+<img src="https://i.imgur.com/JrkGYMM.png" height="80%" width="80%" alt=""/>
 
 - Once the VM is created, navigate to Virtual Machines and select DC-1.
 - Under Settings, click Networking and select the NIC attached to the VM.

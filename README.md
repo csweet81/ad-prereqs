@@ -4,7 +4,6 @@
 
 <h1>Installing & Configuring Active Directory Infrastructure via Remote Desktop</h1>
 <p>
-In this tutorial we'll walk through the process of setting up a Domain Controller (DC) and a Client in Microsoft Azure, showcasing how to configure network connections and test functionality in a controlled virtual environment. By deploying a Windows Server as a Domain Controller (DC-1) and a Windows 10 machine as a client (Client-1), we’ll explore how to configure private networks, assign static IPs, and test connectivity between virtual machines.
 
 Through this step-by-step guide, you’ll gain practical experience in:
 
